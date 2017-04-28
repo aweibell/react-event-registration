@@ -5,7 +5,7 @@ class RegistrationRow extends Component {
   render() {
     return (
       <div className="registration-row">
-        <p>Implement stuff here</p>
+        <input type="text"></input>
       </div>
     );
   }
