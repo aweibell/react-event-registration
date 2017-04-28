@@ -10,6 +10,26 @@ const divStyle = {
   padding: '10px'
 };
 
+const textStyle = {
+  component: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'left',
+    marginLeft: '6px',
+    marginRight: '6px'
+  },
+  label: {
+    fontWeight: 'bold',
+    color: '#f40'
+  },
+  input: {
+    backgroundColor: '#ccc'
+  }
+}
+
+const dropdownStyle = {};
+const checkboxStyle = {};
+
 class RegistrationRow extends Component {
   constructor(props) {
     super(props);
@@ -35,9 +55,9 @@ class RegistrationRow extends Component {
           columns.map((data, index) => {
             const {name, type, options} = data;
             switch(type) {
-              case CHECKBOX: return <CheckBox key={index} name={name} type={type} sendValue={this.sendValue} />
-              case DROPDOWN: return <Dropdown key={index} options={options} name={name} type={type} sendValue={this.sendValue} />
-              case TEXT: return <TextInput key={index} name={name} type={type} sendValue={this.sendValue} />
+              case CHECKBOX: return <CheckBox key={index} name={name} type={type} sendValue={this.sendValue} style={checkboxStyle}/>
+              case DROPDOWN: return <Dropdown key={index} options={options} name={name} type={type} sendValue={this.sendValue} style={dropdownStyle} />
+              case TEXT: return <TextInput key={index} name={name} type={type} sendValue={this.sendValue} style={textStyle}/>
             }
           })
         }
