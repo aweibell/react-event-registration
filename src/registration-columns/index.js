@@ -1,7 +1,7 @@
-import textInput from './TextInput'
-import checkbox from './Checkbox'
-import dropdown from './Dropdown'
+import TextInput from './TextInput'
+import CheckBox from './Checkbox'
+import Dropdown from './Dropdown'
 
 export {
-  textInput, checkbox, dropdown
+  TextInput, CheckBox, Dropdown
 }

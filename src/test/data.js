@@ -9,7 +9,7 @@ const data = {
           "name": "Navn"
         },
         {
-          "type": "check",
+          "type": "checkbox",
           "name": "Middag"
         }
       ]
@@ -23,7 +23,7 @@ const data = {
           "name": "Navn"
         },
         {
-          "type": "check",
+          "type": "checkbox",
           "name": "Middag"
         },
         {

@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+import {TextInput, CheckBox, Dropdown} from '../registration-columns';
+
+import {TEXT, CHECKBOX, DROPDOWN} from '../registration-columns/types';
+
 const divStyle = {
   display: 'flex',
   justifyContent: 'left',
@@ -8,10 +12,19 @@ const divStyle = {
 
 class RegistrationRow extends Component {
   render() {
-    const { name, type } = this.props;
+    const { data, columns } = this.props;
     return (
       <div style={divStyle} className="registration-row">
-        <p>{this.props.name}</p>
+        {
+          columns.map((data, index) => {
+            const {name, type, options} = data;
+            switch(type) {
+              case CHECKBOX: return <CheckBox key={index} name={name}/>
+              case DROPDOWN: return <Dropdown key={index} options={options} name={name}/>
+              case TEXT: return <TextInput key={index} name={name}/>
+            }
+          })
+        }
       </div>
     );
   }

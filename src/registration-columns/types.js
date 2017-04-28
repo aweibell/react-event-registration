@@ -1,5 +1,5 @@
-const TEXT = 'TEXT'
-const CHECKBOX = 'CHECKBOX'
-const DROPDOWN = 'DROPDOWN'
+const TEXT = 'text'
+const CHECKBOX = 'checkbox'
+const DROPDOWN = 'dropdown'
 
 export {TEXT, CHECKBOX, DROPDOWN };

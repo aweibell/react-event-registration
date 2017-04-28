@@ -8,9 +8,9 @@ class Checkbox extends Component {
         <label>{name}</label>
         <select name="select">
           {
-            options.map((opt) => {
+            options.map((opt, index) => {
               const {text, value, selected} = opt
-              return (<option value="{value}" {selected}>{text}</option>)
+              return (<option key={index} value="{value}" selected={selected}>{text}</option>)
             })
           }
         </select>
