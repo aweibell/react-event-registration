@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 
-class Checkbox extends Component {
+class Dropdown extends Component {
+
+  onChangeHandler = (event) => {
+    this.props.sendValue(event.target.value, this.props.id)
+  }
+
   render() {
     const {name, options} = this.props;
     return (
       <div className="checkBox">
         <label>{name}</label>
-        <select name="select">
+        <select name="select" onChange={this.onChangeHandler}>
           {
             options.map((opt, index) => {
               const {text, value, selected} = opt
-              return (<option key={index} value="{value}" selected={selected}>{text}</option>)
+              return (<option key={index} value={value} selected={selected}>{text}</option>)
             })
           }
         </select>
@@ -19,4 +24,4 @@ class Checkbox extends Component {
   }
 }
 
-export default Checkbox;
+export default Dropdown;
