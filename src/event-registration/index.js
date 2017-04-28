@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import RegistrationCollection from '../registration-collection';
-import './component.css';
 
 class EventRegistration extends Component {
   render() {
