@@ -54,6 +54,33 @@ Valid columnn types are
 }
 ```
 
+Styles can be defined on root level and for each collection (registration type). The style objects can all have `collection`, `row`, `column`, `label` and `input` sections. Root level properties are overwritten by collection level styles.
+```json
+{
+  "style": {
+      "collection": {
+        "border": "dashed orange 2px"
+      },
+      "row": {
+        "backgroundColor": "#ddd"
+      },
+      "column": {
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "left",
+        "marginLeft": "6px",
+        "marginRight": "6px"
+      },
+      "label": {
+        "fontWeight": "bold"
+      },
+      "input": {
+        "backgroundColor": "#ccc"
+      }
+  }
+}
+```
+
 ## Getting started
 Clone your team's repository.
 Inside that directory, you can run several commands:

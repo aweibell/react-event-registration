@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const defaultStyle = {
-  component: {
+  column: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'left',
@@ -19,26 +19,22 @@ const defaultStyle = {
 }
 
 class Dropdown extends Component {
-  constructor(props) {
-    super(props)
-    const { style } = props;
-    this.css = {
-      component: Object.assign({}, defaultStyle.component, style.component),
-      label: Object.assign({}, defaultStyle.label, style.label),
-      input: Object.assign({}, defaultStyle.input, style.input)
-    }
-  }
 
   onChangeHandler = (event) => {
     this.props.sendValue(event.target.value, this.props.id)
   }
 
   render() {
-    const {name, options} = this.props;
+    const { name, options, style } = this.props;
+    const composedStyle = {
+      column: Object.assign({}, defaultStyle.column, style.column),
+      label: Object.assign({}, defaultStyle.label, style.label),
+      input: Object.assign({}, defaultStyle.input, style.input)
+    }
     return (
-      <div style={this.css.component}>
-        <label style={this.css.label}>{name}</label>
-        <select style={this.css.input} name="select" onChange={this.onChangeHandler}>
+      <div style={composedStyle.column}>
+        <label style={composedStyle.label}>{name}</label>
+        <select style={composedStyle.input} name="select" onChange={this.onChangeHandler}>
           {
             options.map((opt, index) => {
               const {text, value, selected} = opt
