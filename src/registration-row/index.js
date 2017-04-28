@@ -11,6 +11,22 @@ const divStyle = {
 };
 
 class RegistrationRow extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filledContent: {
+      }
+    }
+  }
+  sendValue = (value, id) => {
+    console.log(`Value ${value} id: ${id}`)
+    this.setState({
+      filledContent: {
+        ...this.state.filledContent,
+        [id]: value,
+      }
+    })
+  }
   render() {
     const { data, columns } = this.props;
     return (
@@ -19,9 +35,9 @@ class RegistrationRow extends Component {
           columns.map((data, index) => {
             const {name, type, options} = data;
             switch(type) {
-              case CHECKBOX: return <CheckBox key={index} name={name}/>
-              case DROPDOWN: return <Dropdown key={index} options={options} name={name}/>
-              case TEXT: return <TextInput key={index} name={name}/>
+              case CHECKBOX: return <CheckBox key={index} name={name} type={type} sendValue={this.sendValue} />
+              case DROPDOWN: return <Dropdown key={index} options={options} name={name} type={type} sendValue={this.sendValue} />
+              case TEXT: return <TextInput key={index} name={name} type={type} sendValue={this.sendValue} />
             }
           })
         }
