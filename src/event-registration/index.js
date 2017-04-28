@@ -3,22 +3,17 @@ import RegistrationCollection from '../registration-collection';
 import './component.css';
 
 class EventRegistration extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { registration } = this.props;
     console.log(registration);
     return (
       <div className="event-registration">
         {
-          registration.map((reg) => {
-            return (<RegistrationCollection />)
+          registration.map((data, index) => {
+            const { name, style, columns } = data;
+            return (<RegistrationCollection key={index} name={name} style={style} columns={columns} />)
           })
         }
-        <RegistrationCollection />
       </div>
     );
   }

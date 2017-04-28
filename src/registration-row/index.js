@@ -3,9 +3,10 @@ import './component.css';
 
 class RegistrationRow extends Component {
   render() {
+    const { name, type } = this.props;
     return (
       <div className="registration-row">
-        <input type="text"></input>
+        <p>{this.props.name}</p>
       </div>
     );
   }

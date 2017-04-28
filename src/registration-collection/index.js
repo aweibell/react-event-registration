@@ -4,9 +4,15 @@ import './component.css';
 
 class RegistrationCollection extends Component {
   render() {
+    const {name, style, columns} = this.props;
     return (
       <div className="registration-collection">
-        <RegistrationRow />
+      {
+        columns.map((data, index) => {
+          const {name, type } = data;
+          return (<RegistrationRow key={index} name={name} type={type} />)
+        })
+      }
       </div>
     );
   }
