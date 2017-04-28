@@ -30,9 +30,18 @@ const data = {
           "type": "dropdown",
           "name": "Aktivitet",
           "options": [
-            "Option 1",
-            "Option 2",
-            "Option 3"
+            {
+              text: "Aktivitet 1",
+              value: "aktivitet1"
+            },
+            {
+              text: "Aktivitet 2",
+              value: "aktivitet2"
+            },
+            {
+              text: "Aktivitet 3",
+              value: "aktivitet3"
+            }
           ]
         }
       ]
