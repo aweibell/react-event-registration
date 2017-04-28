@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import EventRegistration from "./event-registration/index";
-import logo from './logo.svg'
+import logo from './evreg-logo.png'
 import './App.css'
 
 import data from '../test/data';
