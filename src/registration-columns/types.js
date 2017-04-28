@@ -1,0 +1,5 @@
+const TEXT = 'TEXT'
+const CHECKBOX = 'CHECKBOX'
+const DROPDOWN = 'DROPDOWN'
+
+export {TEXT, CHECKBOX, DROPDOWN };
