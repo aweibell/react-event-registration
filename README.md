@@ -1,9 +1,34 @@
-# Team-C
+# Team-C: Event registration
+
+This module provides a dynamic, configurable component for event registration. The main component is `EventRegistration` which contains one or more `RegistrationCollection` components. They can have different configurations, and contains an empty `RegistrationRow` on first load.
+
+Sample configuration:
+```json
+{
+  "registrationBlocks": [{
+      "name": "type 1",
+      "columns": [{
+        "name": "",
+        "type": ""
+      }]
+    },{
+      "name": "type 2",
+      "columns": [{
+        "name": "",
+        "type": ""
+      }]
+  }]
+}
+```
+
+Valid columnn types are
+* text
+* check
+* dropdown
 
 This project was bootstrapped with [Create React App](https://github.com/complex-components/team-c/blob/master/RCA_README.md)
 
 This is your starting point in the Complex Component Consortium Cup.
-
 
 ## Competition
 You will build a complex component in React. The component could be anything you like, but should be more advanced than a text field or button, etc.
