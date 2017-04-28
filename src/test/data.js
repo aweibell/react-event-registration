@@ -2,29 +2,35 @@ const data = {
   "registration": [
     {
       "name": "Voksne",
+      "id": "adults",
       "style": {},
       "columns": [
         {
           "type": "text",
-          "name": "Navn"
+          "name": "Navn",
+          "id": "name",
         },
         {
           "type": "checkbox",
-          "name": "Middag"
+          "name": "Middag",
+          "id": "dinner"
         }
       ]
     },
     {
       "name": "Barn",
+      "id": "kids",
       "style": {},
       "columns": [
         {
           "type": "text",
-          "name": "Navn"
+          "name": "Navn",
+          "id": "name",
         },
         {
           "type": "checkbox",
-          "name": "Middag"
+          "name": "Middag",
+          "id": "dinner"
         },
         {
           "type": "dropdown",
