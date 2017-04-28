@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const defaultStyle = {
-  component: {
+  column: {
   },
   label: {
     fontWeight: 'bold',
@@ -14,15 +14,6 @@ const defaultStyle = {
 }
 
 class TextInput extends Component {
-  constructor(props) {
-    super(props)
-    const { style } = props;
-    this.css = {
-      component: Object.assign({}, defaultStyle.component, style.component),
-      label: Object.assign({}, defaultStyle.label, style.label),
-      input: Object.assign({}, defaultStyle.input, style.input)
-    }
-  }
 
   onChangeHandler = (event) => {
     // TODO: Debounce events? lodash.debounce(...)
@@ -30,11 +21,16 @@ class TextInput extends Component {
   }
 
   render() {
-    const {name} = this.props;
+    const {name, style} = this.props;
+    const composedStyle = {
+      column: Object.assign({}, defaultStyle.column, style.column),
+      label: Object.assign({}, defaultStyle.label, style.label),
+      input: Object.assign({}, defaultStyle.input, style.input)
+    }
     return (
-      <div style={this.css.component}>
-        <label style={this.css.label}>{name}</label>
-        <input style={this.css.input} onChange={this.onChangeHandler} type="text" />
+      <div style={composedStyle.column}>
+        <label style={composedStyle.label}>{name}</label>
+        <input style={composedStyle.input} onChange={this.onChangeHandler} type="text" />
       </div>
     );
   }

@@ -4,31 +4,12 @@ import {TextInput, CheckBox, Dropdown} from '../registration-columns';
 
 import {TEXT, CHECKBOX, DROPDOWN} from '../registration-columns/types';
 
-const divStyle = {
+const defaultRowStyle = {
   display: 'flex',
+  flexWrap: 'wrap',
   justifyContent: 'left',
   padding: '10px'
 };
-
-const textStyle = {
-  component: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'left',
-    marginLeft: '6px',
-    marginRight: '6px'
-  },
-  label: {
-    fontWeight: 'bold',
-    color: '#f40'
-  },
-  input: {
-    backgroundColor: '#ccc'
-  }
-}
-
-const dropdownStyle = {};
-const checkboxStyle = {};
 
 class RegistrationRow extends Component {
   constructor(props) {
@@ -51,16 +32,17 @@ class RegistrationRow extends Component {
   }
 
   render() {
-    const { data, columns } = this.props;
+    const { data, columns, style } = this.props;
+    const rowStyle = Object.assign({}, defaultRowStyle, style.row);
     return (
-      <div style={divStyle} className="registration-row">
+      <div style={rowStyle} className="registration-row">
         {
           columns.map((data, index) => {
             const {id, name, type, options} = data;
             switch(type) {
-              case CHECKBOX: return <CheckBox key={index} id={id} name={name} type={type} sendValue={this.sendValue} style={checkboxStyle}/>
-              case DROPDOWN: return <Dropdown key={index} id={id} options={options} name={name} type={type} sendValue={this.sendValue} style={dropdownStyle} />
-              case TEXT: return <TextInput key={index} id={id} name={name} type={type} sendValue={this.sendValue} style={textStyle}/>
+              case CHECKBOX: return <CheckBox key={index} id={id} name={name} type={type} sendValue={this.sendValue} style={style}/>
+              case DROPDOWN: return <Dropdown key={index} id={id} options={options} name={name} type={type} sendValue={this.sendValue} style={style} />
+              case TEXT: return <TextInput key={index} id={id} name={name} type={type} sendValue={this.sendValue} style={style}/>
             }
           })
         }

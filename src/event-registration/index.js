@@ -22,13 +22,22 @@ class EventRegistration extends Component {
   }
 
   render() {
-    const { registration } = this.props;
+    const { registration, style } = this.props;
     return (
       <div className="event-registration">
         {
+          // For each configured registration type (collection)
           registration.map((data, index) => {
-            const { id, name, style, columns } = data;
-            return (<RegistrationCollection key={index} id={id} name={name} style={style} columns={columns} collect={this.collect} />)
+            const { id, name, columns } = data;
+            const collectionStyle = data.style;
+            const composedStyle = {
+              collection: Object.assign({}, style.collection, collectionStyle.collection),
+              row: Object.assign({}, style.row, collectionStyle.row),
+              column: Object.assign({}, style.column, collectionStyle.column),
+              label: Object.assign({}, style.label, collectionStyle.label),
+              input: Object.assign({}, style.input, collectionStyle.input)
+            }
+            return (<RegistrationCollection key={index} id={id} name={name} style={composedStyle} columns={columns} collect={this.collect} />)
           })
         }
       </div>

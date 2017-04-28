@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const defaultStyle = {
-  component: {
+  column: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'left',
@@ -19,26 +19,22 @@ const defaultStyle = {
 }
 
 class Checkbox extends Component {
-  constructor(props) {
-    super(props)
-    const { style } = props;
-    this.css = {
-      component: Object.assign({}, defaultStyle.component, style.component),
-      label: Object.assign({}, defaultStyle.label, style.label),
-      input: Object.assign({}, defaultStyle.input, style.input)
-    }
-  }
 
   onChangeHandler = (event) => {
     this.props.sendValue(event.target.checked, this.props.id)
   }
 
   render() {
-    const {name} = this.props;
+    const {name, style} = this.props;
+    const composedStyle = {
+      column: Object.assign({}, defaultStyle.column, style.column),
+      label: Object.assign({}, defaultStyle.label, style.label),
+      input: Object.assign({}, defaultStyle.input, style.input)
+    }
     return (
-      <div style={this.css.component}>
-        <label style={this.css.label}>{name}</label>
-        <input style={this.css.input} onChange={this.onChangeHandler} type="checkbox" />
+      <div style={composedStyle.column}>
+        <label style={composedStyle.label}>{name}</label>
+        <input style={composedStyle.input} onChange={this.onChangeHandler} type="checkbox" />
       </div>
     );
   }
