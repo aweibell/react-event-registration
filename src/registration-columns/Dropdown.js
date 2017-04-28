@@ -14,7 +14,6 @@ class Checkbox extends Component {
             })
           }
         </select>
-        <input type="checkbox" />
       </div>
     );
   }
