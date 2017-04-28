@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import EventRegistration from "./event-registration/index";
-import logo from './evreg-logo.png'
+import logo from './evreg_logo.svg'
 import './App.css'
 
 import data from './test/data';
@@ -12,8 +12,8 @@ class App extends Component {
       <div className='App'>
         <div className='App-header'>
           <img src={logo} className='App-logo' alt='logo' />
-          <h2>Please register for our premier event!</h2>
         </div>
+        <h2 className="App-intro">Please register for our premier event!</h2>
         <div className='component-test'>
           <EventRegistration registration={registration} style={style} />
         </div>
