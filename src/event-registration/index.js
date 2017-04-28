@@ -3,12 +3,21 @@ import RegistrationCollection from '../registration-collection';
 import './component.css';
 
 class EventRegistration extends Component {
-  constuctor(){
-    console.log(this.props);
+
+  constructor(props) {
+    super(props);
   }
+
   render() {
+    const { registration } = this.props;
+    console.log(registration);
     return (
       <div className="event-registration">
+        {
+          registration.map((reg) => {
+            return (<RegistrationCollection />)
+          })
+        }
         <RegistrationCollection />
       </div>
     );
