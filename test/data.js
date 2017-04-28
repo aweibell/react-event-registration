@@ -1,4 +1,4 @@
-{
+const data = {
   "registration": [
     {
       "name": "Voksne",
@@ -39,4 +39,6 @@
     }
   ],
   "style": {}
-}
+};
+
+export default data;

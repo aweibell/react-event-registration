@@ -6,7 +6,7 @@ class RegistrationCollection extends Component {
   render() {
     return (
       <div className="registration-collection">
-        <RegistrationRow/>
+        <RegistrationRow />
       </div>
     );
   }

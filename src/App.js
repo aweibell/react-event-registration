@@ -3,6 +3,8 @@ import EventRegistration from "./event-registration/index";
 import logo from './logo.svg'
 import './App.css'
 
+import data from '../test/data';
+
 class App extends Component {
   render () {
     return (
@@ -12,7 +14,7 @@ class App extends Component {
           <h2>Team C!</h2>
         </div>
         <div className='component-test'>
-          <EventRegistration/>
+          <EventRegistration props={data}/>
         </div>
       </div>
     )
