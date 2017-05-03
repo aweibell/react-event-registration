@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 
 const defaultStyle = {
   column: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'left',
+    marginLeft: '6px',
+    marginRight: '6px'
   },
   label: {
     fontWeight: 'bold',
