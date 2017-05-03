@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import {TextInput, CheckBox, Dropdown} from '../registration-columns';
 
@@ -49,6 +50,15 @@ class RegistrationRow extends Component {
       </div>
     );
   }
+}
+
+RegistrationRow.propTypes = {
+  id: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  data: PropTypes.object.isRequired,
+  sendCollectionData: PropTypes.func.isRequired,
+  style: PropTypes.object,
+  columns: PropTypes.array.isRequired
 }
 
 export default RegistrationRow;

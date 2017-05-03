@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import RegistrationCollection from '../registration-collection';
 
 class EventRegistration extends Component {
@@ -43,6 +44,11 @@ class EventRegistration extends Component {
       </div>
     );
   }
+}
+
+EventRegistration.propTypes = {
+  registration: PropTypes.array.isRequired,
+  style: PropTypes.object
 }
 
 export default EventRegistration;

@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import RegistrationRow from '../registration-row';
 
 const defaultCollectionStyle = {
   border: 'solid thin black',
-  margin: '10px'
+  margin: '10px',
+  collectionName: {
+    fontWeight: 'bold',
+    backgroundColor: '#eee'
+  }
 }
 
 class RegistrationCollection extends Component {
@@ -31,6 +36,7 @@ class RegistrationCollection extends Component {
     const collectionStyle = Object.assign({}, defaultCollectionStyle, style.collection);
     return (
       <div style={collectionStyle}>
+      <div style={collectionStyle.collectionName}>{name}</div>
       {
         this.state.content.map((data, index) => {
           return (<RegistrationRow key={index} index={index} id={id} columns={columns} data={data} sendCollectionData={this.sendCollectionData} style={style} />)
@@ -39,6 +45,14 @@ class RegistrationCollection extends Component {
       </div>
     );
   }
+}
+
+RegistrationCollection.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  style: PropTypes.object,
+  columns: PropTypes.array.isRequired,
+  collect: PropTypes.func.isRequired
 }
 
 export default RegistrationCollection;

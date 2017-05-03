@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 const defaultStyle = {
   column: {
@@ -34,6 +35,11 @@ class TextInput extends Component {
       </div>
     );
   }
+}
+
+TextInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  style: PropTypes.object.isRequired
 }
 
 export default TextInput;

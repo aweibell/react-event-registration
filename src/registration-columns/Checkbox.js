@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 const defaultStyle = {
   column: {
@@ -38,6 +39,11 @@ class Checkbox extends Component {
       </div>
     );
   }
+}
+
+Checkbox.propTypes = {
+  name: PropTypes.string.isRequired,
+  style: PropTypes.object.isRequired
 }
 
 export default Checkbox;
