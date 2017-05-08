@@ -26,7 +26,7 @@ class Checkbox extends Component {
   }
 
   render() {
-    const {name, style} = this.props;
+    const {name, style, data} = this.props;
     const composedStyle = {
       column: Object.assign({}, defaultStyle.column, style.column),
       label: Object.assign({}, defaultStyle.label, style.label),
@@ -35,7 +35,7 @@ class Checkbox extends Component {
     return (
       <div style={composedStyle.column}>
         <label style={composedStyle.label}>{name}</label>
-        <input style={composedStyle.input} onChange={this.onChangeHandler} type="checkbox" />
+        <input style={composedStyle.input} onChange={this.onChangeHandler} type="checkbox" checked={data} />
       </div>
     );
   }

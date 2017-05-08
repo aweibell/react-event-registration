@@ -26,7 +26,7 @@ class Dropdown extends Component {
   }
 
   render() {
-    const { name, options, style } = this.props;
+    const { name, options, style, data } = this.props;
     const composedStyle = {
       column: Object.assign({}, defaultStyle.column, style.column),
       label: Object.assign({}, defaultStyle.label, style.label),
@@ -35,11 +35,11 @@ class Dropdown extends Component {
     return (
       <div style={composedStyle.column}>
         <label style={composedStyle.label}>{name}</label>
-        <select style={composedStyle.input} name="select" onChange={this.onChangeHandler}>
+        <select style={composedStyle.input} name="select" onChange={this.onChangeHandler} value={data}>
           {
             options.map((opt, index) => {
-              const {text, value, selected} = opt
-              return (<option key={index} value={value} selected={selected}>{text}</option>)
+              const {text, value} = opt;
+              return (<option key={index} value={value}>{text}</option>)
             })
           }
         </select>

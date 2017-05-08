@@ -14,34 +14,39 @@ const defaultCollectionStyle = {
 class RegistrationCollection extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      content: this.props.content || [{}],
-      filledContent: {}
-    }
+    this.addRow = this.addRow.bind(this);
+    this.updateRow = this.updateRow.bind(this);
   }
 
-  sendCollectionData = (data, index, id) => {
-    console.log(`sendCollectionData: id: ${id}: index: ${index} data: ${data}`)
-    this.setState({
-      filledContent: {
-        ...this.state.filledContent,
-        [index]: data
-      }
-    })
-    this.props.collect(this.state.filledContent, this.props.id)
+  updateRow(rowIndex, updatedValue) {
+    const { collection } = this.props;
+    collection[rowIndex] = updatedValue;
+    this.props.updateCollection(this.props.id, collection);
+  }
+
+  addRow(newRow, collectionId) {
+    // Make a copy of props.collection array
+    const collection = [...this.props.collection ];
+    collection.push(newRow);
+    this.props.updateCollection(collectionId, collection);
   }
 
   render() {
     const {id, name, style, columns} = this.props;
     const collectionStyle = Object.assign({}, defaultCollectionStyle, style.collection);
+    const newRowStyle = {...collectionStyle.row};
+    newRowStyle.backgroundColor = '#ddffff';
+    newRowStyle.borderTop = 'solid thin black';
     return (
       <div style={collectionStyle}>
       <div style={collectionStyle.collectionName}>{name}</div>
       {
-        this.state.content.map((data, index) => {
-          return (<RegistrationRow key={index} index={index} id={id} columns={columns} data={data} sendCollectionData={this.sendCollectionData} style={style} />)
+        this.props.collection.map((data, index) => {
+          return (<RegistrationRow key={index} index={index} collectionId={id} columns={columns} data={data}
+                                   updateRow={this.updateRow} style={style.row} />)
         })
       }
+      <RegistrationRow collectionId={id} columns={columns} addRow={this.addRow} style={newRowStyle} />
       </div>
     );
   }
@@ -52,7 +57,7 @@ RegistrationCollection.propTypes = {
   name: PropTypes.string,
   style: PropTypes.object,
   columns: PropTypes.array.isRequired,
-  collect: PropTypes.func.isRequired
-}
+  collection: PropTypes.array.isRequired
+};
 
 export default RegistrationCollection;

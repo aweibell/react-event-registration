@@ -5,10 +5,14 @@ import RegistrationCollection from '../registration-collection';
 class EventRegistration extends Component {
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      collect: {}
-    }
+      collections: this.props.registration.reduce((acc, reg) => {
+        acc[reg.id] = [];
+        return acc;
+      }, {})
+    };
+    this.updateCollection = this.updateCollection.bind(this);
   }
 
   collect = (data, id) => {
@@ -17,15 +21,19 @@ class EventRegistration extends Component {
         ...this.state.collect,
         [id]: data,
       },
-    })
-    console.log('Collection:')
-    console.log(this.state)
+    });
+  };
+
+  updateCollection(collectionId, data) {
+    const collections = {...this.state.collections};
+    collections[collectionId] = data;
+    this.setState({collections});
   }
 
   render() {
     const { registration, style } = this.props;
     return (
-      <div className="event-registration">
+      <div style={style} className="event-registration">
         {
           // For each configured registration type (collection)
           registration.map((data, index) => {
@@ -37,8 +45,10 @@ class EventRegistration extends Component {
               column: Object.assign({}, style.column, collectionStyle.column),
               label: Object.assign({}, style.label, collectionStyle.label),
               input: Object.assign({}, style.input, collectionStyle.input)
-            }
-            return (<RegistrationCollection key={index} id={id} name={name} style={composedStyle} columns={columns} collect={this.collect} />)
+            };
+            return (<RegistrationCollection key={index} id={id} name={name} style={composedStyle} columns={columns}
+                                            collection={this.state.collections[id]}
+                                            updateCollection={this.updateCollection} />)
           })
         }
       </div>
@@ -48,7 +58,9 @@ class EventRegistration extends Component {
 
 EventRegistration.propTypes = {
   registration: PropTypes.array.isRequired,
-  style: PropTypes.object
+  style: PropTypes.object,
+  onChange: PropTypes.func,
+  onSubmit: PropTypes.func
 }
 
 export default EventRegistration;

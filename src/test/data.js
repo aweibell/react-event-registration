@@ -14,6 +14,11 @@ const data = {
           "type": "checkbox",
           "name": "Middag",
           "id": "dinner"
+        },
+        {
+          "type": "text",
+          "name": "Kommentar",
+          "id": "comment"
         }
       ]
     },
@@ -35,18 +40,20 @@ const data = {
         {
           "type": "dropdown",
           "name": "Aktivitet",
+          "id": "activity",
+          "value": "aktivitet2",
           "options": [
             {
-              text: "Aktivitet 1",
-              value: "aktivitet1"
+              "text": "Aktivitet 1",
+              "value": "aktivitet1"
             },
             {
-              text: "Aktivitet 2",
-              value: "aktivitet2"
+              "text": "Aktivitet 2",
+              "value": "aktivitet2"
             },
             {
-              text: "Aktivitet 3",
-              value: "aktivitet3"
+              "text": "Aktivitet 3",
+              "value": "aktivitet3"
             }
           ]
         }
