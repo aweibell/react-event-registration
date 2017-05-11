@@ -7,12 +7,34 @@ class EventRegistration extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      collections: this.props.registration.reduce((acc, reg) => {
+      collections: this.props.formGroups.reduce((acc, reg) => {
         acc[reg.id] = [];
         return acc;
       }, {})
     };
     this.updateCollection = this.updateCollection.bind(this);
+    this.submit = this.submit.bind(this);
+    this.mergeDataAndFormGroups = this.mergeDataAndFormGroups.bind(this);
+  }
+
+  /*
+   * Is called when parent updates props, i.e. when data is updated from the outside
+   */
+  componentWillReceiveProps(nextProps) {
+    if (nextProps && nextProps.data) {
+      this.setState({ collections: this.mergeDataAndFormGroups(nextProps.data) });
+    }
+  }
+
+  mergeDataAndFormGroups(data) {
+    const result = {...data};
+    // add formGroups that are not yet present in data
+    this.props.formGroups.forEach((fg, index) => {
+      if (result[fg.id] === undefined) {
+        result[fg.id] = [];
+      }
+    });
+    return result;
   }
 
   collect = (data, id) => {
@@ -28,17 +50,26 @@ class EventRegistration extends Component {
     const collections = {...this.state.collections};
     collections[collectionId] = data;
     this.setState({collections});
+    if (this.props.onChange) {
+      this.props.onChange(this.state.collections);
+    }
+  }
+
+  submit() {
+    if (this.props.onSubmit) {
+      this.props.onSubmit(this.state.collections);
+    }
   }
 
   render() {
-    const { registration, style } = this.props;
+    const { formGroups, style, data } = this.props;
     return (
       <div style={style} className="event-registration">
         {
           // For each configured registration type (collection)
-          registration.map((data, index) => {
-            const { id, name, columns } = data;
-            const collectionStyle = data.style;
+          formGroups.map((config, index) => {
+            const { id, name, columns } = config;
+            const collectionStyle = config.style;
             const composedStyle = {
               collection: Object.assign({}, style.collection, collectionStyle.collection),
               row: Object.assign({}, style.row, collectionStyle.row),
@@ -46,10 +77,14 @@ class EventRegistration extends Component {
               label: Object.assign({}, style.label, collectionStyle.label),
               input: Object.assign({}, style.input, collectionStyle.input)
             };
-            return (<RegistrationCollection key={index} id={id} name={name} style={composedStyle} columns={columns}
+            return (<RegistrationCollection key={index} id={id} name={name}
+                                            style={composedStyle} columns={columns}
                                             collection={this.state.collections[id]}
                                             updateCollection={this.updateCollection} />)
           })
+        }
+        {this.props.onSubmit &&
+        <button onClick={this.submit}>Send inn</button>
         }
       </div>
     );
@@ -57,7 +92,8 @@ class EventRegistration extends Component {
 }
 
 EventRegistration.propTypes = {
-  registration: PropTypes.array.isRequired,
+  formGroups: PropTypes.array.isRequired,
+  data: PropTypes.object,
   style: PropTypes.object,
   onChange: PropTypes.func,
   onSubmit: PropTypes.func

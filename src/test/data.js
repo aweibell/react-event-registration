@@ -1,5 +1,5 @@
 const data = {
-  "registration": [
+  "formGroups": [
     {
       "name": "Voksne",
       "id": "adults",

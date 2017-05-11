@@ -35,7 +35,7 @@ class Checkbox extends Component {
     return (
       <div style={composedStyle.column}>
         <label style={composedStyle.label}>{name}</label>
-        <input style={composedStyle.input} onChange={this.onChangeHandler} type="checkbox" checked={data} />
+        <input style={composedStyle.input} onChange={this.onChangeHandler} type="checkbox" checked={data} value={data} />
       </div>
     );
   }
