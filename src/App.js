@@ -12,6 +12,7 @@ class App extends Component {
       registrations: {}
     };
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
+    this.onChangeHandler = this.onChangeHandler.bind(this);
   }
   componentWillMount() {
     this.ref = base.syncState(`/joinin-17-05/registrations`,
@@ -22,12 +23,16 @@ class App extends Component {
         }
       });
 
-    const localStorageRef = localStorage.getItem(`joinin-17-05`);
+    // const localStorageRef = localStorage.getItem(`joinin-17-05`);
 
   }
 
   componentWillUnmount() {
     base.removeBinding(this.ref);
+  }
+
+  onChangeHandler(data) {
+    this.setState( { registrations: data });
   }
 
   onSubmitHandler(data) {
@@ -45,7 +50,10 @@ class App extends Component {
         </div>
         <h2 className="App-intro">Please register for our premier event!</h2>
         <div className='component-test'>
-          <EventRegistration formGroups={formGroups} style={style} data={this.state.registrations} onSubmit={this.onSubmitHandler} />
+          <EventRegistration formGroups={formGroups} style={style}
+                             data={this.state.registrations}
+                             // onSubmit={this.onSubmitHandler}
+                             onChange={this.onChangeHandler}/>
         </div>
       </div>
     )
