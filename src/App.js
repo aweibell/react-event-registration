@@ -22,9 +22,6 @@ class App extends Component {
         then: () => {
         }
       });
-
-    // const localStorageRef = localStorage.getItem(`joinin-17-05`);
-
   }
 
   componentWillUnmount() {
@@ -36,13 +33,11 @@ class App extends Component {
   }
 
   onSubmitHandler(data) {
-    console.log('Handling submit', data);
     this.setState( { registrations: data });
   }
 
   render () {
     const {formGroups, style } = config;
-    console.log('App rendering EventRegistration with data', this.state.registrations);
     return (
       <div className='App'>
         <div className='App-header'>

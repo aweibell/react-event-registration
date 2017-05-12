@@ -38,8 +38,6 @@ class EventRegistration extends Component {
   }
 
   collect = (data, id) => {
-    console.log('EventRegistration.collect data', data);
-    console.log('- id', id);
     this.setState({
       collect: {
         ...this.state.collect,

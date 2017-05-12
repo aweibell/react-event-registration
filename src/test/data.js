@@ -44,6 +44,10 @@ const data = {
           "value": "aktivitet2",
           "options": [
             {
+              "text": "Velg ein aktivitet...",
+              "value": null
+            },
+            {
               "text": "Aktivitet 1",
               "value": "aktivitet1"
             },

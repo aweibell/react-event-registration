@@ -22,8 +22,6 @@ const defaultStyle = {
 class TextInput extends Component {
 
   onChangeHandler = (event) => {
-    // TODO: Debounce events? lodash.debounce(...)
-    // console.log('TextInput value ', event.target.value, 'id', this.props.id);
     this.props.sendValue(event.target.value, this.props.id)
   }
 

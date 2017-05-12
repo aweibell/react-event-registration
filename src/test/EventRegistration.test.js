@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import EventRegistration from '../components/EventRegistration';
 
-import data from '../test/data'
+import data from './data'
 
 const { registration, style } = data
 
