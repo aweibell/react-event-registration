@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import RegistrationRow from '../registration-row';
+import RegistrationRow from '../registration-row/RegistrationRow';
 
 const defaultCollectionStyle = {
   border: 'solid thin black',

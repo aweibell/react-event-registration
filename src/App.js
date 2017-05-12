@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import EventRegistration from "./event-registration/index";
+import EventRegistration from "./event-registration/EventRegistration";
 import logo from './evreg_logo.svg'
 import './App.css'
 import base from './test/base';
