@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {TextInput, CheckBox, Dropdown} from '../registration-columns/RegistrationColumns';
+import {TextInput, CheckBox, Dropdown} from '../columns/RegistrationColumns';
 
-import {TEXT, CHECKBOX, DROPDOWN} from '../registration-columns/types';
+import {TEXT, CHECKBOX, DROPDOWN} from '../columns/types';
 
 const defaultRowStyle = {
   display: 'flex',

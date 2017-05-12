@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import EventRegistration from './EventRegistration';
+import EventRegistration from '../components/EventRegistration';
 
 import data from '../test/data'
 

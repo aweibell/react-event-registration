@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import RegistrationCollection from '../registration-collection/RegistrationCollection';
+import RegistrationCollection from './RegistrationCollection';
 
 class EventRegistration extends Component {
 
@@ -38,6 +38,8 @@ class EventRegistration extends Component {
   }
 
   collect = (data, id) => {
+    console.log('EventRegistration.collect data', data);
+    console.log('- id', id);
     this.setState({
       collect: {
         ...this.state.collect,
