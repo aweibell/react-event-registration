@@ -16,6 +16,7 @@ class RegistrationCollection extends Component {
     super(props);
     this.addRow = this.addRow.bind(this);
     this.updateRow = this.updateRow.bind(this);
+    this.deleteRow = this.deleteRow.bind(this);
   }
 
   updateRow(rowIndex, updatedValue) {
@@ -31,6 +32,12 @@ class RegistrationCollection extends Component {
     this.props.updateCollection(collectionId, collection);
   }
 
+  deleteRow(rowIndex) {
+    const { collection } = this.props;
+    collection.splice(rowIndex, 1);
+    this.props.updateCollection(this.props.id, collection);
+  }
+
   render() {
     const {id, name, style, columns} = this.props;
     const collectionStyle = Object.assign({}, defaultCollectionStyle, style.collection);
@@ -43,6 +50,7 @@ class RegistrationCollection extends Component {
       {
         this.props.collection.map((data, index) => {
           return (<RegistrationRow key={index} index={index} collectionId={id} columns={columns} data={data}
+                                   deleteRow={this.deleteRow}
                                    updateRow={this.updateRow} style={style.row} />)
         })
       }

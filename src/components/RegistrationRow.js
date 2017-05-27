@@ -25,6 +25,7 @@ class RegistrationRow extends Component {
       rowData: {}
     };
     this.addRow = this.addRow.bind(this);
+    this.deleteRow = this.deleteRow.bind(this);
   }
 
   sendValue = (value, colName) => {
@@ -48,6 +49,13 @@ class RegistrationRow extends Component {
       this.props.addRow(this.state.rowData, this.props.collectionId);
       this.rowForm.reset();
       this.setState({rowData: {}});
+    }
+  }
+
+  deleteRow(event) {
+    event.preventDefault();
+    if (this.props.deleteRow) {
+      this.props.deleteRow(this.props.index);
     }
   }
 
@@ -78,6 +86,9 @@ class RegistrationRow extends Component {
           {this.props.addRow &&
             <button style={rowStyle.button} type="submit" >Legg til</button>
           }
+          {this.props.deleteRow &&
+            <button style={rowStyle.button} onClick={this.deleteRow} type="" >X</button>
+          }
         </form>
       </div>
     );
@@ -89,6 +100,7 @@ RegistrationRow.propTypes = {
   index: PropTypes.number,
   data: PropTypes.object,
   addRow: PropTypes.func,
+  deleteRow: PropTypes.func,
   updateCollection: PropTypes.func,
   style: PropTypes.object,
   columns: PropTypes.array.isRequired
