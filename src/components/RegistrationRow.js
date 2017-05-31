@@ -26,9 +26,10 @@ class RegistrationRow extends Component {
     };
     this.addRow = this.addRow.bind(this);
     this.deleteRow = this.deleteRow.bind(this);
+    this.sendValue = this.sendValue.bind(this);
   }
 
-  sendValue = (value, colName) => {
+  sendValue(value, colName) {
     if (this.props.data) {
       // send updated row to parent
       const { data } = this.props;
@@ -40,7 +41,7 @@ class RegistrationRow extends Component {
       rowData[colName] = value;
       this.setState({ rowData });
     }
-  };
+  }
 
   addRow(event) {
     event.preventDefault();
