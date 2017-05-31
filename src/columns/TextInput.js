@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 const defaultStyle = {
   column: {
@@ -18,14 +19,14 @@ const defaultStyle = {
   }
 }
 
-class Dropdown extends Component {
+class TextInput extends Component {
 
   onChangeHandler = (event) => {
     this.props.sendValue(event.target.value, this.props.id)
   }
 
   render() {
-    const { name, options, style } = this.props;
+    const {name, style, data} = this.props;
     const composedStyle = {
       column: Object.assign({}, defaultStyle.column, style.column),
       label: Object.assign({}, defaultStyle.label, style.label),
@@ -34,17 +35,15 @@ class Dropdown extends Component {
     return (
       <div style={composedStyle.column}>
         <label style={composedStyle.label}>{name}</label>
-        <select style={composedStyle.input} name="select" onChange={this.onChangeHandler}>
-          {
-            options.map((opt, index) => {
-              const {text, value, selected} = opt
-              return (<option key={index} value={value} selected={selected}>{text}</option>)
-            })
-          }
-        </select>
+        <input style={composedStyle.input} onChange={this.onChangeHandler} type="text" value={data} />
       </div>
     );
   }
 }
 
-export default Dropdown;
+TextInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  style: PropTypes.object.isRequired
+}
+
+export default TextInput;

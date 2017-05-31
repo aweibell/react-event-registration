@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 const defaultStyle = {
   column: {
@@ -18,14 +19,14 @@ const defaultStyle = {
   }
 }
 
-class Checkbox extends Component {
+class Dropdown extends Component {
 
   onChangeHandler = (event) => {
-    this.props.sendValue(event.target.checked, this.props.id)
+    this.props.sendValue(event.target.value, this.props.id)
   }
 
   render() {
-    const {name, style} = this.props;
+    const { name, options, style, data } = this.props;
     const composedStyle = {
       column: Object.assign({}, defaultStyle.column, style.column),
       label: Object.assign({}, defaultStyle.label, style.label),
@@ -34,10 +35,23 @@ class Checkbox extends Component {
     return (
       <div style={composedStyle.column}>
         <label style={composedStyle.label}>{name}</label>
-        <input style={composedStyle.input} onChange={this.onChangeHandler} type="checkbox" />
+        <select style={composedStyle.input} name="select" onChange={this.onChangeHandler} value={data}>
+          {
+            options.map((opt, index) => {
+              const {text, value} = opt;
+              return (<option key={index} value={value}>{text}</option>)
+            })
+          }
+        </select>
       </div>
     );
   }
 }
 
-export default Checkbox;
+Dropdown.propTypes = {
+  name: PropTypes.string.isRequired,
+  options: PropTypes.array.isRequired,
+  style: PropTypes.object.isRequired
+}
+
+export default Dropdown;

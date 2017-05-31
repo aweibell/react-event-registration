@@ -1,13 +1,43 @@
 import React, { Component } from 'react'
-import EventRegistration from "./event-registration/index";
+import EventRegistration from "./components/EventRegistration";
 import logo from './evreg_logo.svg'
 import './App.css'
-
-import data from './test/data';
+import base from './test/base';
+import config from './test/data';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      registrations: {}
+    };
+    this.onSubmitHandler = this.onSubmitHandler.bind(this);
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+  }
+  componentWillMount() {
+    this.ref = base.syncState(`/joinin-17-05/registrations`,
+      {
+        context: this,
+        state: 'registrations',
+        then: () => {
+        }
+      });
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  }
+
+  onChangeHandler(data) {
+    this.setState( { registrations: data });
+  }
+
+  onSubmitHandler(data) {
+    this.setState( { registrations: data });
+  }
+
   render () {
-    const {registration, style } = data;
+    const {formGroups, style } = config;
     return (
       <div className='App'>
         <div className='App-header'>
@@ -15,7 +45,10 @@ class App extends Component {
         </div>
         <h2 className="App-intro">Please register for our premier event!</h2>
         <div className='component-test'>
-          <EventRegistration registration={registration} style={style} />
+          <EventRegistration formGroups={formGroups} style={style}
+                             data={this.state.registrations}
+                             // onSubmit={this.onSubmitHandler}
+                             onChange={this.onChangeHandler}/>
         </div>
       </div>
     )
