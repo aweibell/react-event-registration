@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import EventRegistration from "./components/EventRegistration";
+//import EventRegistration from "./components/EventRegistration";
+import ShowRegistrations from "./components/ShowRegistrations";
 import logo from './evreg_logo.svg'
 import './App.css'
 import base from './test/base';
@@ -45,10 +46,13 @@ class App extends Component {
         </div>
         <h2 className="App-intro">Please register for our premier event!</h2>
         <div className='component-test'>
-          <EventRegistration formGroups={formGroups} style={style}
+{/*          <EventRegistration formGroups={formGroups} style={style}
                              data={this.state.registrations}
                              // onSubmit={this.onSubmitHandler}
-                             onChange={this.onChangeHandler}/>
+                             onChange={this.onChangeHandler}/>*/}
+          <ShowRegistrations formGroups={formGroups}
+                             style={style}
+                             data={this.state.registrations}/>
         </div>
       </div>
     )
