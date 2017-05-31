@@ -37,15 +37,6 @@ class EventRegistration extends Component {
     return result;
   }
 
-  collect = (data, id) => {
-    this.setState({
-      collect: {
-        ...this.state.collect,
-        [id]: data,
-      },
-    });
-  };
-
   updateCollection(collectionId, data) {
     const collections = {...this.state.collections};
     collections[collectionId] = data;
