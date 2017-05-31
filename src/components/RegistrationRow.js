@@ -62,6 +62,7 @@ class RegistrationRow extends Component {
 
   render() {
     const { data, columns, style } = this.props;
+    // TODO: Consider lodash for deep cloning instead of Object.assign
     const rowStyle = Object.assign({}, defaultRowStyle, style);
     return (
       <div className="registration-row">
@@ -78,6 +79,7 @@ class RegistrationRow extends Component {
                 return <Dropdown key={index} id={id} options={options} name={name} type={type}
                                  sendValue={this.sendValue} style={style} data={fieldData} />
               case TEXT:
+              default:
                 return <TextInput key={index} id={id} name={name} type={type}
                                   ref={(input) => this.textInput = input}
                                   sendValue={this.sendValue} style={style} data={fieldData} />
