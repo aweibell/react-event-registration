@@ -50,9 +50,11 @@ class EventRegistration extends Component {
     const collections = {...this.state.collections};
     collections[collectionId] = data;
     this.setState({collections});
+  }
+
+  componentDidUpdate() {
     if (this.props.onChange) {
-      // TODO: Find out why this.state.collections is not updated here
-      this.props.onChange(collections);
+      this.props.onChange(this.state.collections);
     }
   }
 
