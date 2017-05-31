@@ -46,15 +46,15 @@ class RegistrationCollection extends Component {
     newRowStyle.borderTop = 'solid thin black';
     return (
       <div style={collectionStyle}>
-      <div style={collectionStyle.collectionName}>{name}</div>
-      {
-        this.props.collection.map((data, index) => {
-          return (<RegistrationRow key={index} index={index} collectionId={id} columns={columns} data={data}
-                                   deleteRow={this.deleteRow}
-                                   updateRow={this.updateRow} style={style.row} />)
-        })
-      }
-      <RegistrationRow collectionId={id} columns={columns} addRow={this.addRow} style={newRowStyle} />
+        <div style={collectionStyle.collectionName}>{name}</div>
+        {
+          this.props.collection.map((data, index) => {
+            return (<RegistrationRow key={index} index={index} collectionId={id} columns={columns} data={data}
+                                     deleteRow={this.deleteRow}
+                                     updateRow={this.updateRow} style={style.row}/>)
+          })
+        }
+        <RegistrationRow collectionId={id} columns={columns} addRow={this.addRow} style={newRowStyle}/>
       </div>
     );
   }
