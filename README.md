@@ -165,5 +165,5 @@ export default App
 ```
 
 
-## PRs are welcomed and appliciated
+## PRs are welcomed and appreciated
 See reported issues and get feel free to ask questions to get you started.
