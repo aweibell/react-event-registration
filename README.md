@@ -117,7 +117,7 @@ Styles can be defined on root level and for each collection (registration type).
 ### Component use
 ```javascript
 import React, { Component } from 'react'
-import EventRegistration from "./components/EventRegistration";
+import EventRegistration from "react-event-registration";
 import config from './config';
 
 class App extends Component {
