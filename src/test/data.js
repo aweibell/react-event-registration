@@ -1,63 +1,63 @@
 const data = {
   "formGroups": [
     {
-      "name": "Voksne",
+      "name": "Adult",
       "id": "adults",
       "style": {},
       "columns": [
         {
           "type": "text",
-          "name": "Navn",
+          "name": "Name",
           "id": "name",
         },
         {
           "type": "checkbox",
-          "name": "Middag",
+          "name": "Dinner",
           "id": "dinner"
         },
         {
           "type": "text",
-          "name": "Kommentar",
+          "name": "Comment",
           "id": "comment"
         }
       ]
     },
     {
-      "name": "Barn",
+      "name": "Children",
       "id": "kids",
       "style": {},
       "columns": [
         {
           "type": "text",
-          "name": "Navn",
+          "name": "Name",
           "id": "name",
         },
         {
           "type": "checkbox",
-          "name": "Middag",
+          "name": "Dinner",
           "id": "dinner"
         },
         {
           "type": "dropdown",
-          "name": "Aktivitet",
+          "name": "Activities",
           "id": "activity",
-          "value": "aktivitet2",
+          "value": null,
           "options": [
             {
-              "text": "Velg ein aktivitet...",
+              "text": "Select an activity...",
               "value": null
             },
             {
-              "text": "Aktivitet 1",
-              "value": "aktivitet1"
+              "text": "One activity",
+              "value": "activity1"
             },
             {
-              "text": "Aktivitet 2",
-              "value": "aktivitet2"
+              "text": "Other activity",
+              "value": "activity2"
             },
             {
-              "text": "Aktivitet 3",
-              "value": "aktivitet3"
+              "text": "Third activity",
+              "value": "activity3"
             }
           ]
         }

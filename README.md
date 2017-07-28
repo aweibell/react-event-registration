@@ -7,51 +7,84 @@ Valid columnn types are
 * checkbox
 * dropdown
 
+## Install
 
-### Example configuration:
-```json
-{
-  "registration": [
+Not published yet, so you'll have to clone this repo.
+
+## Usage
+
+### Example configuration
+```javascript
+const data = {
+  "formGroups": [
     {
-      "name": "Voksne",
+      "name": "Adult",
+      "id": "adults",
       "style": {},
       "columns": [
         {
           "type": "text",
-          "name": "Navn"
+          "name": "Name",
+          "id": "name",
         },
         {
-          "type": "check",
-          "name": "Middag"
+          "type": "checkbox",
+          "name": "Dinner",
+          "id": "dinner"
+        },
+        {
+          "type": "text",
+          "name": "Comment",
+          "id": "comment"
         }
       ]
     },
     {
-      "name": "Barn",
+      "name": "Children",
+      "id": "kids",
       "style": {},
       "columns": [
         {
           "type": "text",
-          "name": "Navn"
+          "name": "Name",
+          "id": "name",
         },
         {
-          "type": "check",
-          "name": "Middag"
+          "type": "checkbox",
+          "name": "Dinner",
+          "id": "dinner"
         },
         {
           "type": "dropdown",
-          "name": "Aktivitet",
+          "name": "Activities",
+          "id": "activity",
+          "value": null,
           "options": [
-            "Option 1",
-            "Option 2",
-            "Option 3"
+            {
+              "text": "Select an activity...",
+              "value": null
+            },
+            {
+              "text": "One activity",
+              "value": "activity1"
+            },
+            {
+              "text": "Other activity",
+              "value": "activity2"
+            },
+            {
+              "text": "Third activity",
+              "value": "activity3"
+            }
           ]
         }
       ]
     }
   ],
   "style": {}
-}
+};
+
+export default data;
 ```
 
 Styles can be defined on root level and for each collection (registration type). The style objects can all have `collection`, `row`, `column`, `label` and `input` sections. Root level properties are overwritten by collection level styles.
@@ -81,22 +114,56 @@ Styles can be defined on root level and for each collection (registration type).
 }
 ```
 
-## Getting started
-Clone your team's repository.
-Inside that directory, you can run several commands:
+### Component use
+```javascript
+import React, { Component } from 'react'
+import EventRegistration from "./components/EventRegistration";
+import config from './config';
 
-  `yarn start`
-    Starts the development server.
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      registrations: {}
+    };
+    this.onSubmitHandler = this.onSubmitHandler.bind(this);
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+  }
+  componentWillMount() {
+    // set up db-connection if you like to update on change
+  }
 
-  `yarn test`
-    Starts the test runner.
+  componentWillUnmount() {
+    // close db-connection
+  }
 
-We suggest that you begin by typing:
+  onChangeHandler(data) {
+    this.setState( { registrations: data });
+  }
 
-  ```
-  cd team-c
-  yarn start
-  ```
+  onSubmitHandler(data) {
+    this.setState( { registrations: data });
+  }
+
+  render () {
+    const {formGroups, style } = config;
+    return (
+      <div className='App'>
+        <h1>Please register!</h1>
+        <div className='registration-form'>
+          <EventRegistration formGroups={formGroups} style={style}
+                             data={this.state.registrations}
+                             // onSubmit={this.onSubmitHandler}
+                             onChange={this.onChangeHandler}/>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default App
+```
+
 
 ## PRs are welcomed and appliciated
 See reported issues and get feel free to ask questions to get you started.
