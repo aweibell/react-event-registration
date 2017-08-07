@@ -14,10 +14,7 @@ class EventRegistration extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      collections: this.props.formGroups.reduce((acc, reg) => {
-        acc[reg.id] = [];
-        return acc;
-      }, {})
+      collections: this.mergeDataAndFormGroups(props.data)
     };
     this.updateCollection = this.updateCollection.bind(this);
     this.submit = this.submit.bind(this);
