@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import requiredIf from 'react-required-if';
 import RegistrationCollection from './components/RegistrationCollection';
 
 class EventRegistration extends Component {
@@ -90,8 +91,8 @@ EventRegistration.propTypes = {
   formGroups: PropTypes.array.isRequired,
   data: PropTypes.object,
   style: PropTypes.object,
-  onChange: PropTypes.func,
-  onSubmit: PropTypes.func
+  onChange: requiredIf(PropTypes.func, props => !props.onSubmit),
+  onSubmit: requiredIf(PropTypes.func, props => !props.onChange)
 }
 
 export default EventRegistration;
