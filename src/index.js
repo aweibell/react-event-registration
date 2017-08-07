@@ -64,6 +64,7 @@ class EventRegistration extends Component {
           formGroups.map((config, index) => {
             const { id, name, columns } = config;
             const collectionStyle = config.style;
+            // Merge specific styling for collection with global styling from users config
             const composedStyle = {
               collection: Object.assign({}, style.collection, collectionStyle.collection),
               row: Object.assign({}, style.row, collectionStyle.row),

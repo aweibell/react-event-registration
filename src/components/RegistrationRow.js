@@ -10,11 +10,20 @@ const defaultRowStyle = {
   flexWrap: 'wrap',
   justifyContent: 'flex-start',
   padding: '10px',
+  margin: '0 0 1em',
+  border: 'solid thin rgb(158, 221, 255)',
+  backgroundColor: '#e6ebff',
   button: {
     alignSelf: 'flex-end',
-    flexGrow: '2',
-    color: '#070',
+    margin: '10px 6px 2px',
+    flexGrow: '0',
     fontWeight: 'bold'
+  },
+  addButton: {
+    color: '#070',
+  },
+  deleteButton: {
+    color: '#a00'
   }
 };
 
@@ -64,6 +73,12 @@ class RegistrationRow extends Component {
     const { data, columns, style } = this.props;
     // TODO: Consider lodash for deep cloning instead of Object.assign
     const rowStyle = Object.assign({}, defaultRowStyle, style);
+    const buttonStyle = Object.assign({}, rowStyle.button);
+    const deleteButtonStyle = Object.assign({}, buttonStyle, rowStyle.deleteButton);
+    const addButtonStyle = Object.assign({}, buttonStyle, rowStyle.addButton);
+    delete rowStyle.button;
+    delete rowStyle.addButton;
+    delete rowStyle.deleteButton;
     return (
       <div className="registration-row">
         <form ref={(input) => this.rowForm = input} style={rowStyle} onSubmit={(e) => this.addRow(e)}>
@@ -87,10 +102,10 @@ class RegistrationRow extends Component {
           })
         }
           {this.props.addRow &&
-            <button style={rowStyle.button} type="submit" >Legg til</button>
+            <button style={addButtonStyle} type="submit" >+</button>
           }
           {this.props.deleteRow &&
-            <button style={rowStyle.button} onClick={this.deleteRow} type="" >X</button>
+            <button style={deleteButtonStyle} onClick={this.deleteRow} type="" >X</button>
           }
         </form>
       </div>
