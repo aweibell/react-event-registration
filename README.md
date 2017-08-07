@@ -99,10 +99,16 @@ Styles can be defined on root level and for each collection (registration type).
 {
   "style": {
       "collection": {
-        "border": "dashed orange 2px"
+        "border": "dashed orange 2px",
+        "collectionName": {
+          "backgroundColor": "yellow"
+        }
       },
       "row": {
-        "backgroundColor": "#ddd"
+        "backgroundColor": "#ddd",
+        "newRow": {
+          "border": "solid 2px maroon"
+        }
       },
       "column": {
         "display": "flex",
