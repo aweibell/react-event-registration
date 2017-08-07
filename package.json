@@ -1,6 +1,7 @@
 {
   "name": "react-event-registration",
   "version": "0.2.0",
+  "main": "dist/index.js",
   "description": "A simple event registration component for React",
   "repository": "https://github.com/aweibell/react-event-registration.git",
   "author": "Atle Weibell and John-Olav Storvold",
