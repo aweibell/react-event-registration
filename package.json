@@ -1,16 +1,29 @@
 {
   "name": "react-event-registration",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple event registration component for React",
+  "repository": "https://github.com/aweibell/react-event-registration.git",
   "author": "Atle Weibell and John-Olav Storvold",
-  "dependencies": {
+  "license": "MIT",
+  "dependencies": {},
+  "peerDependencies": {
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
   "devDependencies": {
-    "react-scripts": "0.9.5"
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "cross-env": "^5.0.4",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-scripts": "0.9.5",
+    "webpack": "^3.4.1"
   },
   "scripts": {
-    "build": "babel src -d dist"
+    "watch": "cross-env NODE_ENV=development webpack -w",
+    "build:dev": "cross-env NODE_ENV=development webpack",
+    "build:production": "cross-env NODE_ENV=production webpack -p"
   }
 }
