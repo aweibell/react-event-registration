@@ -20,7 +20,11 @@ const defaultStyle = {
 }
 
 class TextInput extends Component {
-
+  constructor(props) {
+    super(props);
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+  }
+  
   onChangeHandler(event) {
     this.props.sendValue(event.target.value, this.props.id)
   }

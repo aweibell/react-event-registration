@@ -20,6 +20,11 @@ const defaultStyle = {
 }
 
 class Checkbox extends Component {
+  constructor(props) {
+    super(props);
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+  }
+
 
   onChangeHandler(event) {
     this.props.sendValue(event.target.checked, this.props.id)
