@@ -1,4 +1,4 @@
-# Event registration component
+# Event registration 
 
 This module provides a dynamic, configurable component for event registration. The main component is `EventRegistration` which contains one or more `RegistrationCollection` components. They can have different configurations, and contains an empty `RegistrationRow` on first load.
 
@@ -9,9 +9,11 @@ Valid columnn types are
 
 ## Install
 
-Not published yet, so you'll have to clone this repo.
+To install til component, run `yarn add react-event-registration` or `npm install react-event-registration`
 
 ## Usage
+
+To use the component in your React application, you need a configuration for the content you want: 
 
 ### Example configuration
 ```javascript
@@ -115,6 +117,9 @@ Styles can be defined on root level and for each collection (registration type).
 ```
 
 ### Component use
+
+Here is how you import and use the component in your React application. Please note that you need to provide either an `onSubmit` or an `onChange` prop, and of course the `formGroups` and `style` props. To prefill the component with previously entered information, use the `data` prop.
+
 ```javascript
 import React, { Component } from 'react'
 import EventRegistration from "react-event-registration";
