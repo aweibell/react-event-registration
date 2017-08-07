@@ -21,7 +21,7 @@ const defaultStyle = {
 
 class Dropdown extends Component {
 
-  onChangeHandler = (event) => {
+  onChangeHandler(event) {
     this.props.sendValue(event.target.value, this.props.id)
   }
 
