@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import RegistrationCollection from './RegistrationCollection';
+import RegistrationCollection from './components/RegistrationCollection';
 
 class EventRegistration extends Component {
 
