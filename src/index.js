@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import RegistrationCollection from './components/RegistrationCollection';
 
+const defaultTexts = {
+  submit: 'Submit',
+  addRow: '+',
+  deleteRow: 'X'
+};
+
 class EventRegistration extends Component {
 
   constructor(props) {
@@ -57,7 +63,8 @@ class EventRegistration extends Component {
   }
 
   render() {
-    const { formGroups, style, data } = this.props;
+    const { formGroups, style, data, texts } = this.props;
+    Object.assign(defaultTexts, texts);
     return (
       <div style={style} className="event-registration">
         {
@@ -73,14 +80,14 @@ class EventRegistration extends Component {
               label: Object.assign({}, style.label, collectionStyle.label),
               input: Object.assign({}, style.input, collectionStyle.input)
             };
-            return (<RegistrationCollection key={index} id={id} name={name}
+            return (<RegistrationCollection key={index} id={id} name={name} texts={defaultTexts}
                                             style={composedStyle} columns={columns}
                                             collection={this.state.collections[id]}
                                             updateCollection={this.updateCollection} />)
           })
         }
         {this.props.onSubmit &&
-        <button onClick={this.submit}>Send inn</button>
+        <button onClick={this.submit}>{defaultTexts.submit}</button>
         }
       </div>
     );
@@ -91,6 +98,7 @@ EventRegistration.propTypes = {
   formGroups: PropTypes.array.isRequired,
   data: PropTypes.object,
   style: PropTypes.object,
+  texts: PropTypes.object,
   onChange: requiredIf(PropTypes.func, props => !props.onSubmit),
   onSubmit: requiredIf(PropTypes.func, props => !props.onChange)
 }

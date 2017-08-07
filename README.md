@@ -83,7 +83,12 @@ const data = {
       ]
     }
   ],
-  "style": {}
+  "style": {},
+  "texts": {
+    "submit": "Send data",
+    "addRow": "Add record",
+    "deleteRow": "Remove record"
+  }
 };
 
 export default data;
@@ -151,12 +156,14 @@ class App extends Component {
   }
 
   render () {
-    const {formGroups, style } = config;
+    const {formGroups, style, texts } = config;
     return (
       <div className='App'>
         <h1>Please register!</h1>
         <div className='registration-form'>
-          <EventRegistration formGroups={formGroups} style={style}
+          <EventRegistration formGroups={formGroups}
+                             style={style}
+                             texts={texts}
                              data={this.state.registrations}
                              // onSubmit={this.onSubmitHandler}
                              onChange={this.onChangeHandler}/>

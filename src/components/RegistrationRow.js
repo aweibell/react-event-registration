@@ -70,7 +70,7 @@ class RegistrationRow extends Component {
   }
 
   render() {
-    const { data, columns, style } = this.props;
+    const { data, columns, style, texts } = this.props;
     // TODO: Consider lodash for deep cloning instead of Object.assign
     const rowStyle = Object.assign({}, defaultRowStyle, style);
     const buttonStyle = Object.assign({}, rowStyle.button);
@@ -102,10 +102,10 @@ class RegistrationRow extends Component {
           })
         }
           {this.props.addRow &&
-            <button style={addButtonStyle} type="submit" >+</button>
+            <button style={addButtonStyle} type="submit" >{texts.addRow}</button>
           }
           {this.props.deleteRow &&
-            <button style={deleteButtonStyle} onClick={this.deleteRow} type="" >X</button>
+            <button style={deleteButtonStyle} onClick={this.deleteRow} type="" >{texts.deleteRow}</button>
           }
         </form>
       </div>
@@ -121,6 +121,7 @@ RegistrationRow.propTypes = {
   deleteRow: PropTypes.func,
   updateCollection: PropTypes.func,
   style: PropTypes.object,
+  texts: PropTypes.object,
   columns: PropTypes.array.isRequired
 }
 

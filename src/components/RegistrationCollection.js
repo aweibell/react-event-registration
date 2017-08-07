@@ -48,7 +48,7 @@ class RegistrationCollection extends Component {
   }
 
   render() {
-    const {id, name, style, columns} = this.props;
+    const {id, name, style, columns, texts} = this.props;
     const collectionNameStyle = Object.assign({}, defaultStyles.collection.collectionName, style.collection.collectionName);
     const collectionStyle = Object.assign({}, defaultStyles.collection, style.collection);
     delete collectionStyle.collectionName;
@@ -61,11 +61,12 @@ class RegistrationCollection extends Component {
         {
           this.props.collection.map((data, index) => {
             return (<RegistrationRow key={index} index={index} collectionId={id} columns={columns} data={data}
+                                     texts={texts}
                                      deleteRow={this.deleteRow}
                                      updateRow={this.updateRow} style={rowStyle}/>)
           })
         }
-        <RegistrationRow collectionId={id} columns={columns} addRow={this.addRow} style={newRowStyle}/>
+        <RegistrationRow collectionId={id} columns={columns} addRow={this.addRow} style={newRowStyle} texts={texts}/>
       </div>
     );
   }
@@ -75,6 +76,7 @@ RegistrationCollection.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string,
   style: PropTypes.object,
+  texts: PropTypes.object,
   columns: PropTypes.array.isRequired,
   collection: PropTypes.array.isRequired
 };
