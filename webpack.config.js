@@ -34,7 +34,6 @@ const WebpackConfig = {
 
 // webpack production config.
 if ( process.env.NODE_ENV === 'production' ) {
-    console.log('We are in production!!');
     WebpackConfig.externals = {
         'react': 'react',
         'react-dom': 'react-dom'
@@ -56,7 +55,6 @@ if ( process.env.NODE_ENV === 'production' ) {
     ];
 
 }
-console.log('Done with webpack script. Config', WebpackConfig);
 
 
 module.exports = WebpackConfig;
