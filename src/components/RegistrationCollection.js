@@ -4,18 +4,20 @@ import RegistrationRow from './RegistrationRow';
 
 const defaultStyles = {
   collection: {
-    // border: 'solid thin black',
+    border: 'solid 2px #777',
     margin: '10px',
     collectionName: {
-      padding: '5px',
+      padding: '5px 20px',
       fontWeight: 'bold',
-      borderBottom: 'solid thin #ddffdd',
-      backgroundColor: '#eee'
+      borderBottom: 'solid thin #aaa',
+      color: '#fff',
+      backgroundColor: '#777'
     }
   },
   row: {
     newRow: {
-      backgroundColor: '#c4e5ff'
+      backgroundColor: '#ddd',
+      borderTop: 'solid thin #aaa'
     }
   }
 };
@@ -52,7 +54,7 @@ class RegistrationCollection extends Component {
     const collectionNameStyle = Object.assign({}, defaultStyles.collection.collectionName, style.collection.collectionName);
     const collectionStyle = Object.assign({}, defaultStyles.collection, style.collection);
     delete collectionStyle.collectionName;
-    const newRowStyle = Object.assign({}, defaultStyles.row.newRow, style.row.newRow);
+    const newRowStyle = Object.assign({}, defaultStyles.row, defaultStyles.row.newRow, style.row, style.row.newRow);
     const rowStyle = Object.assign({}, defaultStyles.row, style.row);
     delete rowStyle.newRow;
     return (

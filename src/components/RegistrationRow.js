@@ -10,20 +10,27 @@ const defaultRowStyle = {
   flexWrap: 'wrap',
   justifyContent: 'flex-start',
   padding: '10px',
-  margin: '0 0 1em',
-  border: 'solid thin rgb(158, 221, 255)',
-  backgroundColor: '#e6ebff',
+  margin: '0',
+  borderTop: 'solid thin #777',
+  backgroundColor: '#bbb',
   button: {
     alignSelf: 'flex-end',
     margin: '10px 6px 2px',
+    borderRadius: '4px',
     flexGrow: '0',
     fontWeight: 'bold'
   },
   addButton: {
-    color: '#070',
+    backgroundColor: '#070',
+    color: '#fff'
   },
   deleteButton: {
-    color: '#a00'
+    backgroundColor: '#a00',
+    color: '#fff'
+  },
+  input: {
+    padding: '2px 5px',
+    borderRadius: '4px'
   }
 };
 
